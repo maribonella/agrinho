@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Agrinho 2026 | Agro Forte e Sustentável</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">🌱 AgrinhoPortal</div>
+        <ul class="nav-links">
+            <li><a onclick="scrollToSection('home')">Início</a></li>
+            <li><a onclick="scrollToSection('tecnologias')">Tecnologias</a></li>
+            <li><a onclick="scrollToSection('simulador')">Simulador</a></li>
+            <li><a onclick="scrollToSection('Desafio')">EcoQuiz</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <div class="hero-text">
+            <span
+                style="color: var(--primary-light); font-weight: bold; letter-spacing: 2px; text-transform: uppercase;">Concurso
+                Agrinho 2026</span>
+            <h1>Agro Forte,<br>Futuro Sustentável</h1>
+            <p>Conectando a ciência e a tecnologia do campo com o respeito e preservação ambiental. Descubra como
+                produzimos em equilíbrio perfeito com o ecossistema.</p>
+            <button class="btn-cta" onclick="scrollToSection('simulador')">Testar Simulador da Fazenda</button>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad451?q=80&w=600"
+                alt="Tecnologia Agrícola">
+        </div>
+    </section>
+
+    <section id="tecnologias">
+        <h2 class="section-title">Tecnologias do Equilíbrio</h2>
+        <div class="grid-tech">
+            <div class="card-tech">
+                <span class="tag tag-prod">Produção Eficiente</span>
+                <h3>Drones de Pulverização</h3>
+                <p>Sobrevoam as plantações mapeando pragas em tempo real. Permitem aplicar insumos apenas onde é
+                    estritamente necessário, reduzindo o uso de químicos em até 80%.</p>
+            </div>
+            <div class="card-tech">
+                <span class="tag tag-sust">Preservação</span>
+                <h3>Plantio Direto</h3>
+                <p>Cultivo feito sobre os resíduos da colheita anterior. Protege o solo contra a erosão, mantém a
+                    umidade da terra e reduz drasticamente as emissões de carbono.</p>
+            </div>
+            <div class="card-tech">
+                <span class="tag tag-sust">Recursos Hídricos</span>
+                <h3>Irrigação Inteligente</h3>
+                <p>Sensores subterrâneos medem a umidade da terra. O sistema só libera água quando a planta realmente
+                    precisa, evitando o desperdício dos aquíferos.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="simulador">
+        <h2 class="section-title">Simulador: Fazenda Equilibrada</h2>
+        <p style="text-align: center; margin-bottom: 2rem; color: #546e7a;">Tome decisões gerenciais e tente manter a
+            produtividade alta sem destruir o Meio Ambiente!</p>
+
+        <div class="dashboard-container">
+            <div class="dash-card" style="border-bottom: 4px solid var(--primary-light);">
+                <h4>Produtividade</h4>
+                <div class="value" id="val-prod">70%</div>
+                <small style="color: green;">Sacos por hectare</small>
+            </div>
+            <div class="dash-card" style="border-bottom: 4px solid var(--accent);">
+                <h4>Saúde do Solo</h4>
+                <div class="value" id="val-solo">80%</div>
+                <small>Nutrientes ativos</small>
+            </div>
+            <div class="dash-card" style="border-bottom: 4px solid #fbc02d;">
+                <h4>Preservação da Água</h4>
+                <div class="value" id="val-agua">90%</div>
+                <small>Fontes limpas</small>
+            </div>
+        </div>
+
+        <div class="controls-panel">
+            <h3>Painel de Ações de Manejo</h3>
+            <p style="margin-bottom: 1rem; font-size: 0.9rem; color: #666;">Clique para aplicar técnicas e ver o impacto
+                nos dados acima:</p>
+            <button class="btn-panel" onclick="aplicarManejo('quimico')">⚠️ Usar Defensivo Químico Tradicional</button>
+            <button class="btn-panel" onclick="aplicarManejo('biologico')">🌿 Adotar Controle Biológico</button>
+            <button class="btn-panel" onclick="aplicarManejo('solar')">☀️ Instalar Energia Solar e Sensores</button>
+            <button class="btn-panel" onclick="aplicarManejo('floresta')">🌳 Reflorestar Margens de Rios</button>
+        </div>
+    </section>
+
+    <section id="Desafio">
+        <h2 class="section-title">Desafio EcoQuiz</h2>
+        <div class="quiz-container" id="quiz-box">
+            <h3 id="quiz-question">Carregando pergunta...</h3>
+            <div class="quiz-options" id="quiz-options">
+            </div>
+            <p id="quiz-feedback" style="font-weight: bold; margin-top: 1rem;"></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>Portal Agro Forte, Futuro Sustentável - Tema Oficial Agrinho 2026</p>
+        <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #b0bec5;">Desenvolvido utilizando arquitetura limpa de
+            front-end com HTML5, CSS3 estrutural e Vanilla JavaScript.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
