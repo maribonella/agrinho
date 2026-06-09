@@ -1,474 +1,142 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Agrinho 2026 | Agro Forte e Sustentável</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-    <nav>
-        <div class="logo">🌱 AgrinhoPortal</div>
-        <ul class="nav-links">
-            <li><a onclick="scrollToSection('home')">Início</a></li>
-            <li><a onclick="scrollToSection('tecnologias')">Tecnologias</a></li>
-            <li><a onclick="scrollToSection('simulador')">Simulador</a></li>
-            <li><a onclick="scrollToSection('Desafio')">EcoQuiz</a></li>
-        </ul>
-    </nav>
-
-    <section id="home">
-        <div class="hero-text">
-            <span
-                style="color: var(--primary-light); font-weight: bold; letter-spacing: 2px; text-transform: uppercase;">Concurso
-                Agrinho 2026</span>
-            <h1>Agro Forte,<br>Futuro Sustentável</h1>
-            <p>Conectando a ciência e a tecnologia do campo com o respeito e preservação ambiental. Descubra como
-                produzimos em equilíbrio perfeito com o ecossistema.</p>
-            <button class="btn-cta" onclick="scrollToSection('simulador')">Testar Simulador da Fazenda</button>
-        </div>
-        <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad451?q=80&w=600"
-                alt="Tecnologia Agrícola">
-        </div>
-    </section>
-
-    <section id="tecnologias">
-        <h2 class="section-title">Tecnologias do Equilíbrio</h2>
-        <div class="grid-tech">
-            <div class="card-tech">
-                <span class="tag tag-prod">Produção Eficiente</span>
-                <h3>Drones de Pulverização</h3>
-                <p>Sobrevoam as plantações mapeando pragas em tempo real. Permitem aplicar insumos apenas onde é
-                    estritamente necessário, reduzindo o uso de químicos em até 80%.</p>
-            </div>
-            <div class="card-tech">
-                <span class="tag tag-sust">Preservação</span>
-                <h3>Plantio Direto</h3>
-                <p>Cultivo feito sobre os resíduos da colheita anterior. Protege o solo contra a erosão, mantém a
-                    umidade da terra e reduz drasticamente as emissões de carbono.</p>
-            </div>
-            <div class="card-tech">
-                <span class="tag tag-sust">Recursos Hídricos</span>
-                <h3>Irrigação Inteligente</h3>
-                <p>Sensores subterrâneos medem a umidade da terra. O sistema só libera água quando a planta realmente
-                    precisa, evitando o desperdício dos aquíferos.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="simulador">
-        <h2 class="section-title">Simulador: Fazenda Equilibrada</h2>
-        <p style="text-align: center; margin-bottom: 2rem; color: #546e7a;">Tome decisões gerenciais e tente manter a
-            produtividade alta sem destruir o Meio Ambiente!</p>
-
-        <div class="dashboard-container">
-            <div class="dash-card" style="border-bottom: 4px solid var(--primary-light);">
-                <h4>Produtividade</h4>
-                <div class="value" id="val-prod">70%</div>
-                <small style="color: green;">Sacos por hectare</small>
-            </div>
-            <div class="dash-card" style="border-bottom: 4px solid var(--accent);">
-                <h4>Saúde do Solo</h4>
-                <div class="value" id="val-solo">80%</div>
-                <small>Nutrientes ativos</small>
-            </div>
-            <div class="dash-card" style="border-bottom: 4px solid #fbc02d;">
-                <h4>Preservação da Água</h4>
-                <div class="value" id="val-agua">90%</div>
-                <small>Fontes limpas</small>
-            </div>
-        </div>
-
-        <div class="controls-panel">
-            <h3>Painel de Ações de Manejo</h3>
-            <p style="margin-bottom: 1rem; font-size: 0.9rem; color: #666;">Clique para aplicar técnicas e ver o impacto
-                nos dados acima:</p>
-            <button class="btn-panel" onclick="aplicarManejo('quimico')">⚠️ Usar Defensivo Químico Tradicional</button>
-            <button class="btn-panel" onclick="aplicarManejo('biologico')">🌿 Adotar Controle Biológico</button>
-            <button class="btn-panel" onclick="aplicarManejo('solar')">☀️ Instalar Energia Solar e Sensores</button>
-            <button class="btn-panel" onclick="aplicarManejo('floresta')">🌳 Reflorestar Margens de Rios</button>
-        </div>
-    </section>
-
-    <section id="Desafio">
-        <h2 class="section-title">Desafio EcoQuiz</h2>
-        <div class="quiz-container" id="quiz-box">
-            <h3 id="quiz-question">Carregando pergunta...</h3>
-            <div class="quiz-options" id="quiz-options">
-            </div>
-            <p id="quiz-feedback" style="font-weight: bold; margin-top: 1rem;"></p>
-        </div>
-    </section>
-
-    <footer>
-        <p>Portal Agro Forte, Futuro Sustentável - Tema Oficial Agrinho 2026</p>
-        <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #b0bec5;">Desenvolvido utilizando arquitetura limpa de
-            front-end com HTML5, CSS3 estrutural e Vanilla JavaScript.</p>
-    </footer>
-    <script src="script.js"></script>
-</body>
-
-</html>
- // 1. Navegação Suave (Scroll)
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // 2. Lógica do Simulador de Fazenda
-        let dadosFazenda = { produtividade: 70, solo: 80, agua: 90 };
-
-        function atualizarPainel() {
-            document.getElementById('val-prod').innerText = dadosFazenda.produtividade + "%";
-            document.getElementById('val-solo').innerText = dadosFazenda.solo + "%";
-            document.getElementById('val-agua').innerText = dadosFazenda.agua + "%";
-        }
-
-        function aplicarManejo(tipo) {
-            if (tipo === 'quimico') {
-                dadosFazenda.produtividade = Math.min(dadosFazenda.produtividade + 15, 100);
-                dadosFazenda.solo = Math.max(dadosFazenda.solo - 20, 0);
-                dadosFazenda.agua = Math.max(dadosFazenda.agua - 25, 0);
-            } else if (tipo === 'biologico') {
-                dadosFazenda.produtividade = Math.min(dadosFazenda.produtividade + 5, 100);
-                dadosFazenda.solo = Math.min(dadosFazenda.solo + 15, 100);
-            } else if (tipo === 'solar') {
-                dadosFazenda.produtividade = Math.min(dadosFazenda.produtividade + 10, 100);
-                dadosFazenda.agua = Math.min(dadosFazenda.agua + 5, 100);
-            } else if (tipo === 'floresta') {
-                dadosFazenda.solo = Math.min(dadosFazenda.solo + 10, 100);
-                dadosFazenda.agua = Math.min(dadosFazenda.agua + 20, 100);
-            }
-            atualizarPainel();
-        }
-
-        // 3. Lógica do Jogo Quiz
-        const perguntasQuiz = [
-            {
-                q: "Qual prática une melhor o aumento da produção com a proteção do solo?",
-                options: ["Queimar a palha antiga", "Plantio Direto sobre a palhada", "Deixar o solo exposto ao sol"],
-                correct: 1
-            },
-            {
-                q: "Como os drones ajudam a equilibrar a produção e o meio ambiente?",
-                options: ["Apenas tirando fotos bonitas", "Aplicando defensivos em excesso", "Detectando pragas precisamente para evitar desperdício de insumos"],
-                correct: 2
-            }
-        ];
-
-        let perguntaAtual = 0;
-
-        function carregarPergunta() {
-            if (perguntaAtual >= perguntasQuiz.length) {
-                document.getElementById('quiz-box').innerHTML = "<h3>🎉 Parabéns! Você completou o EcoQuiz do Agrinho!</h3><p style='margin-top:1rem;'>Você compreende a importância do equilíbrio no campo.</p>";
-                return;
-            }
-
-            let item = perguntasQuiz[perguntaAtual];
-            document.getElementById('quiz-question').innerText = item.q;
-            let optionsDiv = document.getElementById('quiz-options');
-            optionsDiv.innerHTML = "";
-            document.getElementById('quiz-feedback').innerText = "";
-
-            item.options.forEach((opt, index) => {
-                let btn = document.createElement('button');
-                btn.className = 'btn-option';
-                btn.innerText = opt;
-                btn.onclick = () => checarResposta(index);
-                optionsDiv.appendChild(btn);
-            });
-        }
-
-        function checarResposta(escolha) {
-            let correto = perguntasQuiz[perguntaAtual].correct;
-            let feedback = document.getElementById('quiz-feedback');
-
-            if (escolha === correto) {
-                feedback.innerHTML = "✨ Resposta Correta!";
-                feedback.style.color = "green";
-                perguntaAtual++;
-                setTimeout(carregarPergunta, 1500);
-            } else {
-                feedback.innerHTML = "❌ Tente novamente! Pense no equilíbrio ecológico.";
-                feedback.style.color = "red";
-            }
-        }
-
-        // Inicialização
-        carregarPergunta();
-        /* --- CONFIGURAÇÕES GERAIS E PALETA DE CORES --- */
-        :root {
-            --primary: #1b5e20;
-            --primary-light: #4caf50;
-            --secondary: #a1887f;
-            --accent: #00acc1;
-            --dark: #263238;
-            --light: #f8f9fa;
-            --white: #ffffff;
-            --shadow: 0 8px 30px rgba(0,0,0,0.08);
-        }
-
+    <title>Agrinho - Agro Forte e Sustentável</title>
+    <style>
+        /* Reset simples */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+            font-family: Arial, sans-serif;
         }
 
         body {
-            background-color: #f1f5f2;
-            color: var(--dark);
-            overflow-x: hidden;
+            line-height: 1.6;
+            background-color: #f5f8f5;
+            color: #333;
         }
 
-        /* --- NAVEGAÇÃO --- */
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+        }
+
+        header p {
+            font-size: 1.2em;
+            font-style: italic;
+        }
+
         nav {
-            background-color: rgba(27, 94, 32, 0.95);
-            backdrop-filter: blur(10px);
-            color: var(--white);
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: var(--shadow);
+            margin-top: 10px;
         }
 
-        .logo {
-            font-weight: 800;
-            font-size: 1.4rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 1.5rem;
-        }
-
-        .nav-links a {
-            color: var(--white);
+        nav a {
+            color: white;
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            cursor: pointer;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-light);
-        }
-
-        /* --- SEÇÕES (GERENCIAMENTO DE TELA VIA JS) --- */
-        section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            min-height: 80vh;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            color: var(--primary);
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background-color: var(--primary-light);
-            margin: 0.5rem auto 0 auto;
-            border-radius: 2px;
-        }
-
-        /* --- HOME / HERO --- */
-        #home {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 2rem;
-            min-height: calc(100vh - 70px);
-        }
-
-        .hero-text {
-            flex: 1;
-        }
-
-        .hero-text h1 {
-            font-size: 3.5rem;
-            color: var(--primary);
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-text p {
-            font-size: 1.2rem;
-            color: #546e7a;
-            margin-bottom: 2rem;
-        }
-
-        .btn-cta {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(27,94,32,0.3);
-            transition: transform 0.3s, background 0.3s;
-        }
-
-        .btn-cta:hover {
-            background-color: var(--primary-light);
-            transform: translateY(-2px);
-        }
-
-        .hero-image {
-            flex: 1;
-            text-align: center;
-        }
-
-        .hero-image img {
-            max-width: 100%;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-        }
-
-        /* --- HUB DE TECNOLOGIAS (CARDS) --- */
-        .grid-tech {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .card-tech {
-            background: var(--white);
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s;
-            border-top: 5px solid var(--primary-light);
-        }
-
-        .card-tech:hover {
-            transform: translateY(-5px);
-        }
-
-        .card-tech h3 {
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .tag {
-            display: inline-block;
-            padding: 0.25rem 0.7rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            margin: 0 15px;
             font-weight: bold;
-            margin-bottom: 1rem;
         }
 
-        .tag-prod { background-color: #e8f5e9; color: var(--primary); }
-        .tag-sust { background-color: #e0f7fa; color: var(--accent); }
-
-        /* --- DASHBOARD SIMULADO --- */
-        .dashboard-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
+        nav a:hover {
+            text-decoration: underline;
         }
 
-        .dash-card {
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            text-align: center;
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
         }
 
-        .dash-card h4 { color: #78909c; font-size: 0.9rem; text-transform: uppercase; }
-        .dash-card .value { font-size: 2rem; font-weight: 700; color: var(--dark); margin: 0.5rem 0; }
-
-        .controls-panel {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            text-align: center;
+        section {
+            margin-bottom: 50px;
         }
 
-        .btn-panel {
-            background: #cfd8dc;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            margin: 0.5rem;
+        .about, .sustainability {
+            background-color: #e8f5e9;
+            padding: 30px;
             border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.2s;
         }
 
-        .btn-panel:hover { background: var(--primary-light); color: var(--white); }
-
-        /* --- GAME QUIZ --- */
-        .quiz-container {
-            background: var(--white);
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            text-align: center;
+        .about h2, .sustainability h2 {
+            color: #2e7d32;
+            margin-bottom: 15px;
         }
 
-        .quiz-options {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin: 2rem 0;
+        .about p, .sustainability p {
+            font-size: 1.1em;
         }
 
-        .btn-option {
-            background: var(--light);
-            border: 2px solid #e0e0e0;
-            padding: 1rem;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 1rem;
-            text-align: left;
-            transition: all 0.2s;
-        }
-
-        .btn-option:hover {
-            border-color: var(--primary-light);
-            background-color: #f4fbf4;
-        }
-
-        /* --- FOOTER --- */
         footer {
-            background-color: var(--dark);
-            color: var(--white);
+            background-color: #2e7d32;
+            color: white;
             text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
+            padding: 20px 0;
         }
 
-        /* Responsividade */
-        @media (max-width: 768px) {
-            #home { flex-direction: column; text-align: center; padding-top: 2rem; }
-            .hero-text h1 { font-size: 2.5rem; }
-            nav { flex-direction: column; gap: 1rem; }
+        footer a {
+            color: #c8e6c9;
+            text-decoration: none;
         }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Botão interativo */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            background-color: #388E3C;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Agrinho</h1>
+        <p>Agro Forte, Desenvolvimento Sustentável, Equilíbrio entre Produção e Meio Ambiente</p>
+        <nav>
+            <a href="#about">Sobre Nós</a>
+            <a href="#sustainability">Sustentabilidade</a>
+            <a href="#contact">Contato</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="about" class="about">
+            <h2>Sobre Agrinho</h2>
+            <p>A Agrinho é dedicada a promover práticas agrícolas fortes e sustentáveis, equilibrando produtividade com respeito ao meio ambiente. Nosso objetivo é transformar a agroindústria de forma consciente e inovadora.</p>
+            <a href="#contact" class="btn">Entre em Contato</a>
+        </section>
+
+        <section id="sustainability" class="sustainability">
+            <h2>Sustentabilidade</h2>
+            <p>Investimos em técnicas que aumentam a eficiência da produção agrícola enquanto preservam os recursos naturais. O equilíbrio entre o crescimento econômico e o cuidado ambiental é o nosso compromisso.</p>
+        </section>
+    </div>
+
+    <footer id="contact">
+        <p>Contato: <a href="mailto:contato@agrinho.com.br">contato@agrinho.com.br</a> | Telefone: (00) 1234-5678</p>
+        <p>&copy; 2026 Agrinho. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
